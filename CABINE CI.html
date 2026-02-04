@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabine CI</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f2f4f7; margin:0}
+    header {background:linear-gradient(90deg,#ff7900,#0a7cff,#ffd400); color:#fff; padding:20px; text-align:center}
+    main {max-width:900px; margin:20px auto; background:#fff; padding:20px; border-radius:10px}
+    h2 {color:#0a7cff}
+    label {display:block; margin-top:12px; font-weight:bold}
+    input, select, button {width:100%; padding:10px; margin-top:5px}
+    button {background:#0a7cff; color:#fff; border:none; cursor:pointer; border-radius:6px; margin-top:15px}
+    button:hover {opacity:0.9}
+    .box {border:1px solid #ddd; padding:15px; margin-top:20px; border-radius:8px}
+    .hidden {display:none}
+    .logos img {height:40px; margin-right:10px}
+    footer {text-align:center; padding:15px; color:#777}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Cabine CI</h1>
+  <p>Transfert d'unités & souscription de pass – Côte d'Ivoire</p>
+  <img src="https://via.placeholder.com/800x200?text=Cabine+CI+-+Unit%C3%A9s+%26+Pass" style="width:100%;margin-top:10px;border-radius:10px;" />
+</header><main>
+  <div class="logos">
+    <p style="color:#666;font-size:14px">Réseaux disponibles</p>
+    <img id="logoOrange" class="hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Orange_logo.svg/200px-Orange_logo.svg.png" />
+    <img id="logoMTN" class="hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/MTN_Logo.svg/200px-MTN_Logo.svg.png" />
+    <img id="logoMoov" class="hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Moov_Africa_logo.svg/200px-Moov_Africa_logo.svg.png" />
+  </div>  <h2>Faire une demande</h2>
+  <p style="color:#555">Sélectionnez votre réseau, le type de service et le pass. Après validation, vous serez redirigé vers le paiement et une notification WhatsApp sera envoyée à l’administrateur.</p>
+  <div class="box">
+    <label>Votre numéro</label>
+    <input type="tel" id="clientNumber" placeholder="07xxxxxxxx" /><label>Réseau</label>
+<select id="network">
+  <option>Orange</option>
+  <option>MTN</option>
+  <option>Moov</option>
+</select>
+
+<label>Type de service</label>
+<select id="serviceType">
+  <option>Transfert d'unités</option>
+  <option>Souscription de pass</option>
+</select>
+
+<label>Type de pass (à saisir)</label>
+<input type="text" id="pass" placeholder="Ex: Pass Internet 3 Go / Unités 2000" />
+
+<label>Montant (FCFA)</label>
+<input type="number" id="amount" placeholder="Ex: 3000" />
+
+<label>Moyen de paiement</label>
+<select id="payment">
+  <option>Wave</option>
+  <option>Orange Money</option>
+  <option>MTN MoMo</option>
+  <option>Moov Money</option>
+</select>
+
+<button onclick="sendOrder()">Continuer & Payer</button>
+
+  </div>  <h2>Accès Administrateur</h2>
+  <div class="box">
+    <input type="password" id="adminCode" placeholder="Code admin" />
+    <button onclick="loginAdmin()">Connexion</button>
+  </div>  <div id="adminPanel" class="box hidden">
+    <h2>Paramètres Administrateur</h2><label>Numéro WhatsApp Admin</label>
+<input type="text" id="adminWhatsapp" placeholder="2250700000000" />
+
+<label>Orange Money</label>
+<input type="text" id="orangePay" placeholder="Numéro Orange Money" />
+
+<label>MTN MoMo</label>
+<input type="text" id="mtnPay" placeholder="Numéro MTN" />
+
+<label>Moov Money</label>
+<input type="text" id="moovPay" placeholder="Numéro Moov" />
+
+<label>Wave</label>
+<input type="text" id="wavePay" placeholder="Numéro Wave" />
+
+<button onclick="saveAdmin()">Enregistrer</button>
+<p id="adminMsg"></p>
+
+  </div>
+</main><footer>
+  © 2026 Cabine CI – Service assisté via WhatsApp
+</footer><script>
+  const ADMIN_SECRET = '01020';
+  let admin = { whatsapp:'', orange:'', mtn:'', moov:'', wave:'' };
+
+  function loginAdmin(){
+    if(document.getElementById('adminCode').value===ADMIN_SECRET){
+      document.getElementById('adminPanel').classList.remove('hidden');
+    } else alert('Veuillez effectuer le paiement sur le numéro suivant : ' + payNumber + '
+
+Après paiement, cliquez sur OK pour notifier l’administrateur sur WhatsApp.');
+    // Notification WhatsApp à l'administrateur
+    window.open(https://wa.me/${admin.whatsapp}?text=${msg},'_blank');
+  }
+</script></body>
+</html>
